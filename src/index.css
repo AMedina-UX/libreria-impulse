@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --color-impulse-azul-60: #1674FF;
+    --color-impulse-azul-80: #045FE6;
+    --color-impulse-azul-200: #034291;
+    --color-impulse-azul-300: #04255B;
+    --color-impulse-azul-400: #05224D;
+    --color-impulse-azul-700: #060E2C;
+    --color-impulse-azul-800: #040B20;
+    --color-impulse-azul-900: #020717;
+
+    --color-impulse-celeste-10: #F4F9FF;
+    --color-impulse-celeste-20: #E2EFFF;
+    --color-impulse-celeste-30: #C7E2FF;
+    --color-impulse-celeste-40: #A9D3FF;
+    --color-impulse-celeste-50: #9FCBFF;
+    --color-impulse-celeste-60: #5DACFF;
+    --color-impulse-celeste-80: #4C9BFF;
+    --color-impulse-celeste-100: #017CFF;
+
+    --color-impulse-neutro-10: #F1F3F7;
+    --color-impulse-neutro-20: #E8EBF0;
+    --color-impulse-neutro-50: #D0D7E0;
+    --color-impulse-neutro-80: #B3BECD;
+    --color-impulse-neutro-100: #A0AEC0;
+    --color-impulse-neutro-200: #838F9D;
+    --color-impulse-neutro-300: #646E7B;
+    --color-impulse-neutro-400: #4B535E;
+    --color-impulse-neutro-600: #2B323B;
+    --color-impulse-neutro-900: #161A1E;
+
+    --color-impulse-acentuador-20: #FFE2D4;
+    --color-impulse-acentuador-40: #FFBA9A;
+    --color-impulse-acentuador-60: #FF9E71;
+    --color-impulse-acentuador-80: #FF7636;
+    --color-impulse-acentuador-100: #FF5505;
+    --color-impulse-acentuador-200: #E54900;
+    --color-impulse-acentuador-300: #B13800;
+    --color-impulse-acentuador-400: #8B2C00;
+    --color-impulse-acentuador-600: #692100;
+    --color-impulse-acentuador-900: #541A00;
+
+    --color-impulse-purple: #6366F1;
+    --color-impulse-violet: #8B5CF6;
+    --color-impulse-pink: #EC4899;
+    --color-impulse-dark: #1E1B4B;
+
+    --animate-shimmer: shimmer 1.5s infinite;
+
+    @keyframes shimmer {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+}
+
+
+:root {
+    /* Primary - Blue */
+    --color-primary: var(--color-impulse-azul-60);
+    --color-primary-foreground: #ffffff;
+    --color-primary-hover: var(--color-impulse-azul-80);
+
+    /* Light - White/Gray */
+    --color-light: var(--color-impulse-neutro-10);
+    --color-light-foreground: var(--color-impulse-neutro-900);
+    --color-light-hover: var(--color-impulse-neutro-20);
+
+    /* Accent - Purple (Impulse Brand) */
+    --color-accent: var(--color-impulse-purple);
+    --color-accent-foreground: #ffffff;
+    --color-accent-hover: var(--color-impulse-violet);
+
+    /* Success - Green */
+    --color-success: #22C55E;
+    --color-success-foreground: #ffffff;
+    --color-success-hover: #16A34A;
+
+    /* Warning - Yellow/Gold */
+    --color-warning: #EAB308;
+    --color-warning-foreground: #ffffff;
+    --color-warning-hover: #CA8A04;
+
+    /* Destructive - Red */
+    --color-destructive: #EF4444;
+    --color-destructive-foreground: #ffffff;
+    --color-destructive-hover: #DC2626;
+
+    /* Impulse Brand Colors - Legacy */
+    --color-impulse-purple: #6366F1;
+    --color-impulse-violet: #8B5CF6;
+    --color-impulse-pink: #EC4899;
+    --color-impulse-dark: #1E1B4B;
+
+    /* Impulse Palette - Azul */
+    --color-impulse-azul-60: #1674FF;
+    --color-impulse-azul-80: #045FE6;
+    --color-impulse-azul-200: #034291;
+    --color-impulse-azul-300: #04255B;
+    --color-impulse-azul-400: #05224D;
+    --color-impulse-azul-700: #060E2C;
+    --color-impulse-azul-800: #040B20;
+    --color-impulse-azul-900: #020717;
+
+    /* Impulse Palette - Celeste */
+    --color-impulse-celeste-10: #F4F9FF;
+    --color-impulse-celeste-20: #E2EFFF;
+    --color-impulse-celeste-30: #C7E2FF;
+    --color-impulse-celeste-40: #A9D3FF;
+    --color-impulse-celeste-50: #9FCBFF;
+    --color-impulse-celeste-60: #5DACFF;
+    --color-impulse-celeste-80: #4C9BFF;
+    --color-impulse-celeste-100: #017CFF;
+
+    /* Impulse Palette - Neutro */
+    --color-impulse-neutro-10: #F1F3F7;
+    --color-impulse-neutro-20: #E8EBF0;
+    --color-impulse-neutro-50: #D0D7E0;
+    --color-impulse-neutro-80: #B3BECD;
+    --color-impulse-neutro-100: #A0AEC0;
+    --color-impulse-neutro-200: #838F9D;
+    --color-impulse-neutro-300: #646E7B;
+    --color-impulse-neutro-400: #4B535E;
+    --color-impulse-neutro-600: #2B323B;
+    --color-impulse-neutro-900: #161A1E;
+
+    --color-background: #ffffff;
+    --color-foreground: #0f172a;
+}
