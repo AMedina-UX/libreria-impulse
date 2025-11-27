@@ -1,7 +1,7 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { baseColors, impulseAzul, impulseCeleste, impulseNeutro } from '../constants/tokens';
+import { baseColors, impulseAzul, impulseCeleste, impulseNeutro, semanticExito, semanticAdvertencia, semanticError } from '../constants/tokens';
 
 const ColorCard = ({ name, value, text, border }: { name: string, value: string, text: string, border?: boolean }) => (
     <div className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100">
@@ -61,6 +61,41 @@ export const Palette: Story = {
                             {baseColors.map((color) => (
                                 <ColorCard key={color.name} {...color} />
                             ))}
+                        </div>
+                    </section>
+
+                    <section className="mb-16">
+                        <div className="flex items-center gap-4 mb-8">
+                            <div className="h-px flex-1 bg-gray-200"></div>
+                            <h2 className="text-2xl font-bold text-gray-800 uppercase tracking-wider text-sm">Semánticos</h2>
+                            <div className="h-px flex-1 bg-gray-200"></div>
+                        </div>
+
+                        <div className="mb-12">
+                            <h3 className="text-xl font-bold text-green-700 mb-6">Exito</h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                                {semanticExito.map((color) => (
+                                    <ColorCard key={color.name} {...color} />
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="mb-12">
+                            <h3 className="text-xl font-bold text-yellow-600 mb-6">Advertencia</h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                                {semanticAdvertencia.map((color) => (
+                                    <ColorCard key={color.name} {...color} />
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="mb-12">
+                            <h3 className="text-xl font-bold text-red-600 mb-6">Error</h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                                {semanticError.map((color) => (
+                                    <ColorCard key={color.name} {...color} />
+                                ))}
+                            </div>
                         </div>
                     </section>
 

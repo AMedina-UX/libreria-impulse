@@ -43,3 +43,42 @@ export const impulseNeutro = [
     { name: 'Neutro 600', value: 'var(--color-impulse-neutro-600)', text: '#ffffff' },
     { name: 'Neutro 900', value: 'var(--color-impulse-neutro-900)', text: '#ffffff' },
 ];
+
+export const semanticExito = [
+    { name: 'Verde 20', value: 'var(--color-semantic-exito-20)', text: '#000000', border: true },
+    { name: 'Verde 40', value: 'var(--color-semantic-exito-40)', text: '#000000' },
+    { name: 'Verde 60', value: 'var(--color-semantic-exito-60)', text: '#000000' },
+    { name: 'Verde 80', value: 'var(--color-semantic-exito-80)', text: '#000000' },
+    { name: 'Verde 100', value: 'var(--color-semantic-exito-100)', text: '#ffffff' },
+    { name: 'Verde 200', value: 'var(--color-semantic-exito-200)', text: '#ffffff' },
+    { name: 'Verde 300', value: 'var(--color-semantic-exito-300)', text: '#ffffff' },
+    { name: 'Verde 400', value: 'var(--color-semantic-exito-400)', text: '#ffffff' },
+    { name: 'Verde 500', value: 'var(--color-semantic-exito-500)', text: '#ffffff' },
+    { name: 'Verde 600', value: 'var(--color-semantic-exito-600)', text: '#ffffff' },
+];
+
+export const semanticAdvertencia = [
+    { name: 'Amarillo 20', value: 'var(--color-semantic-advertencia-20)', text: '#000000', border: true },
+    { name: 'Amarillo 40', value: 'var(--color-semantic-advertencia-40)', text: '#000000' },
+    { name: 'Amarillo 60', value: 'var(--color-semantic-advertencia-60)', text: '#000000' },
+    { name: 'Amarillo 80', value: 'var(--color-semantic-advertencia-80)', text: '#000000' },
+    { name: 'Amarillo 100', value: 'var(--color-semantic-advertencia-100)', text: '#000000' },
+    { name: 'Amarillo 200', value: 'var(--color-semantic-advertencia-200)', text: '#ffffff' },
+    { name: 'Amarillo 300', value: 'var(--color-semantic-advertencia-300)', text: '#ffffff' },
+    { name: 'Amarillo 400', value: 'var(--color-semantic-advertencia-400)', text: '#ffffff' },
+    { name: 'Amarillo 500', value: 'var(--color-semantic-advertencia-500)', text: '#ffffff' },
+    { name: 'Amarillo 600', value: 'var(--color-semantic-advertencia-600)', text: '#ffffff' },
+];
+
+export const semanticError = [
+    { name: 'Rojo 20', value: 'var(--color-semantic-error-20)', text: '#000000', border: true },
+    { name: 'Rojo 40', value: 'var(--color-semantic-error-40)', text: '#000000' },
+    { name: 'Rojo 60', value: 'var(--color-semantic-error-60)', text: '#000000' },
+    { name: 'Rojo 80', value: 'var(--color-semantic-error-80)', text: '#000000' },
+    { name: 'Rojo 100', value: 'var(--color-semantic-error-100)', text: '#ffffff' },
+    { name: 'Rojo 200', value: 'var(--color-semantic-error-200)', text: '#ffffff' },
+    { name: 'Rojo 300', value: 'var(--color-semantic-error-300)', text: '#ffffff' },
+    { name: 'Rojo 400', value: 'var(--color-semantic-error-400)', text: '#ffffff' },
+    { name: 'Rojo 500', value: 'var(--color-semantic-error-500)', text: '#ffffff' },
+    { name: 'Rojo 600', value: 'var(--color-semantic-error-600)', text: '#ffffff' },
+];

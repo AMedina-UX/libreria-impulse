@@ -47,6 +47,42 @@
     --color-impulse-pink: #EC4899;
     --color-impulse-dark: #1E1B4B;
 
+    /* Semantic - Exito */
+    --color-semantic-exito-20: #F5FFF8;
+    --color-semantic-exito-40: #CEF1D8;
+    --color-semantic-exito-60: #97DFB0;
+    --color-semantic-exito-80: #65C48A;
+    --color-semantic-exito-100: #2DA160;
+    --color-semantic-exito-200: #217645;
+    --color-semantic-exito-300: #0D532A;
+    --color-semantic-exito-400: #0A4020;
+    --color-semantic-exito-500: #06371A;
+    --color-semantic-exito-600: #032A13;
+
+    /* Semantic - Advertencia */
+    --color-semantic-advertencia-20: #FFF4DE;
+    --color-semantic-advertencia-40: #FFE5B2;
+    --color-semantic-advertencia-60: #FFD176;
+    --color-semantic-advertencia-80: #FFB829;
+    --color-semantic-advertencia-100: #F6A400;
+    --color-semantic-advertencia-200: #D47D03;
+    --color-semantic-advertencia-300: #BB6D02;
+    --color-semantic-advertencia-400: #905400;
+    --color-semantic-advertencia-500: #603800;
+    --color-semantic-advertencia-600: #432700;
+
+    /* Semantic - Error */
+    --color-semantic-error-20: #FCF1EF;
+    --color-semantic-error-40: #FFC5BB;
+    --color-semantic-error-60: #FF9381;
+    --color-semantic-error-80: #FF5C41;
+    --color-semantic-error-100: #E93417;
+    --color-semantic-error-200: #C72308;
+    --color-semantic-error-300: #991803;
+    --color-semantic-error-400: #6D0E00;
+    --color-semantic-error-500: #480900;
+    --color-semantic-error-600: #260501;
+
     --animate-shimmer: shimmer 1.5s infinite;
 
     @keyframes shimmer {
@@ -74,19 +110,19 @@
     --color-accent-hover: var(--color-impulse-violet);
 
     /* Success - Green */
-    --color-success: #22C55E;
+    --color-success: var(--color-semantic-exito-100);
     --color-success-foreground: #ffffff;
-    --color-success-hover: #16A34A;
+    --color-success-hover: var(--color-semantic-exito-200);
 
     /* Warning - Yellow/Gold */
-    --color-warning: #EAB308;
+    --color-warning: var(--color-semantic-advertencia-100);
     --color-warning-foreground: #ffffff;
-    --color-warning-hover: #CA8A04;
+    --color-warning-hover: var(--color-semantic-advertencia-200);
 
     /* Destructive - Red */
-    --color-destructive: #EF4444;
+    --color-destructive: var(--color-semantic-error-100);
     --color-destructive-foreground: #ffffff;
-    --color-destructive-hover: #DC2626;
+    --color-destructive-hover: var(--color-semantic-error-200);
 
     /* Impulse Brand Colors - Legacy */
     --color-impulse-purple: #6366F1;
