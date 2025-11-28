@@ -24,6 +24,18 @@ const meta = {
         loading: {
             control: 'boolean',
         },
+        startIcon: {
+            control: 'text',
+        },
+        endIcon: {
+            control: 'text',
+        },
+        showStartIcon: {
+            control: 'boolean',
+        },
+        showEndIcon: {
+            control: 'boolean',
+        },
     },
 } satisfies Meta<typeof Button>;
 
@@ -36,6 +48,10 @@ export const Primary: Story = {
         color: 'primary',
         variant: 'filled',
         size: 'md',
+        startIcon: 'check',
+        endIcon: 'arrow_forward',
+        showStartIcon: true,
+        showEndIcon: true,
     },
 };
 
@@ -62,6 +78,8 @@ export const AllSizes: Story = {
         color: 'primary',
         variant: 'filled',
         children: 'Button',
+        showStartIcon: true,
+        showEndIcon: true,
     },
 };
 
@@ -80,6 +98,8 @@ export const AllVariants: Story = {
         color: 'primary',
         children: 'Button',
         size: 'md',
+        showStartIcon: true,
+        showEndIcon: true,
     },
 };
 
@@ -100,5 +120,7 @@ export const AllColors: Story = {
     args: {
         children: 'Button',
         size: 'md',
+        showStartIcon: true,
+        showEndIcon: true,
     },
 };

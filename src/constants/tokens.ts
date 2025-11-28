@@ -1,12 +1,6 @@
 export const baseColors = [
-    { name: 'Primary', value: 'var(--color-primary)', text: 'var(--color-primary-foreground)', description: 'Main brand color, used for primary actions.' },
-    { name: 'Light', value: 'var(--color-light)', text: 'var(--color-light-foreground)', border: true, description: 'Backgrounds and subtle elements.' },
-    { name: 'Accent', value: 'var(--color-accent)', text: 'var(--color-accent-foreground)', description: 'Highlights and call-to-actions.' },
-    { name: 'Success', value: 'var(--color-success)', text: 'var(--color-success-foreground)', description: 'Success states and confirmations.' },
-    { name: 'Warning', value: 'var(--color-warning)', text: 'var(--color-warning-foreground)', description: 'Warnings and cautionary alerts.' },
-    { name: 'Destructive', value: 'var(--color-destructive)', text: 'var(--color-destructive-foreground)', description: 'Destructive actions and errors.' },
-    { name: 'Background', value: 'var(--color-background)', text: 'var(--color-foreground)', border: true, description: 'Page background.' },
-    { name: 'Foreground', value: 'var(--color-foreground)', text: 'var(--color-background)', description: 'Default text color.' },
+    { name: 'Blanco', value: '#ffffff', text: '#000000', border: true, description: 'Pure white.' },
+    { name: 'Negro', value: '#000000', text: '#ffffff', description: 'Pure black.' },
 ];
 
 export const impulseAzul = [

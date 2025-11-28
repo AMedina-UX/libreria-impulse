@@ -21,6 +21,22 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
      * Button contents
      */
     children: React.ReactNode;
+    /**
+     * Icon to show at the start (left) of the button
+     */
+    startIcon?: string;
+    /**
+     * Icon to show at the end (right) of the button
+     */
+    endIcon?: string;
+    /**
+     * Whether to show the start icon
+     */
+    showStartIcon?: boolean;
+    /**
+     * Whether to show the end icon
+     */
+    showEndIcon?: boolean;
 }
 
 export const Button = ({
@@ -29,68 +45,80 @@ export const Button = ({
     size = 'md',
     loading = false,
     children,
-    className = '',
     disabled,
+    startIcon = 'check',
+    endIcon = 'arrow_forward',
+    showStartIcon = true,
+    showEndIcon = true,
     ...props
-}: ButtonProps) => {
+}: Omit<ButtonProps, 'className'>) => {
 
-    const baseStyles = 'font-sans font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center';
+    const baseStyles = 'font-sans font-medium rounded-lg transition-colors focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center';
 
     const sizeStyles = {
-        xs: 'text-xs px-2 py-[5px] gap-2',
-        sm: 'text-sm p-2 gap-2',
-        md: 'text-base p-2 gap-2',
-        lg: 'text-lg p-3 gap-2',
-        xl: 'text-xl p-3 gap-2',
+        xs: 'h-[30px] px-[8px] gap-[4px] text-[12px] font-semibold',
+        sm: 'h-[36px] px-[8px] gap-[8px] text-[12px] font-semibold',
+        md: 'h-[40px] px-[8px] gap-[8px] text-[14px] font-semibold',
+        lg: 'h-[48px] px-[12px] gap-[8px] text-[16px] font-semibold',
+        xl: 'h-[52px] px-[12px] gap-[8px] text-[16px] font-semibold',
+    };
+
+    const iconSizes = {
+        xs: '!text-[20px]',
+        sm: '!text-[20px]',
+        md: '!text-[24px]',
+        lg: '!text-[24px]',
+        xl: '!text-[28px]',
     };
 
     const colorStyles = {
         primary: {
-            filled: 'bg-impulse-azul-60 text-white hover:bg-impulse-azul-80 focus:ring-impulse-azul-60',
-            outline: 'border-2 border-impulse-azul-60 text-impulse-azul-60 hover:bg-impulse-azul-60/10 focus:ring-impulse-azul-60',
-            ghost: 'text-impulse-azul-60 hover:bg-impulse-azul-60/10 focus:ring-impulse-azul-60',
-            link: 'text-impulse-azul-60 hover:underline focus:ring-impulse-azul-60',
+            filled: 'bg-impulse-azul-60 text-white hover:bg-impulse-azul-80',
+            outline: 'border-2 border-impulse-azul-60 text-impulse-azul-60 hover:bg-impulse-azul-60/10',
+            ghost: 'text-impulse-azul-60 hover:bg-impulse-azul-60/10',
+            link: 'text-impulse-azul-60 hover:underline',
         },
         light: {
-            filled: 'bg-impulse-neutro-10 text-impulse-neutro-900 hover:bg-impulse-neutro-20 focus:ring-impulse-neutro-900',
-            outline: 'border-2 border-impulse-neutro-900 text-impulse-neutro-900 hover:bg-impulse-neutro-900/10 focus:ring-impulse-neutro-900',
-            ghost: 'text-impulse-neutro-900 hover:bg-impulse-neutro-900/10 focus:ring-impulse-neutro-900',
-            link: 'text-impulse-neutro-900 hover:underline focus:ring-impulse-neutro-900',
+            filled: 'bg-impulse-neutro-10 text-impulse-neutro-900 hover:bg-impulse-neutro-20',
+            outline: 'border-2 border-impulse-neutro-900 text-impulse-neutro-900 hover:bg-impulse-neutro-900/10',
+            ghost: 'text-impulse-neutro-900 hover:bg-impulse-neutro-900/10',
+            link: 'text-impulse-neutro-900 hover:underline',
         },
         accent: {
-            filled: 'bg-impulse-acentuador-100 text-white hover:bg-impulse-acentuador-200 focus:ring-impulse-acentuador-100',
-            outline: 'border-2 border-impulse-acentuador-100 text-impulse-acentuador-100 hover:bg-impulse-acentuador-100/10 focus:ring-impulse-acentuador-100',
-            ghost: 'text-impulse-acentuador-100 hover:bg-impulse-acentuador-100/10 focus:ring-impulse-acentuador-100',
-            link: 'text-impulse-acentuador-100 hover:underline focus:ring-impulse-acentuador-100',
+            filled: 'bg-impulse-acentuador-100 text-white hover:bg-impulse-acentuador-200',
+            outline: 'border-2 border-impulse-acentuador-100 text-impulse-acentuador-100 hover:bg-impulse-acentuador-100/10',
+            ghost: 'text-impulse-acentuador-100 hover:bg-impulse-acentuador-100/10',
+            link: 'text-impulse-acentuador-100 hover:underline',
         },
         success: {
-            filled: 'bg-green-600 text-white hover:bg-green-700 focus:ring-green-600',
-            outline: 'border-2 border-green-600 text-green-600 hover:bg-green-600/10 focus:ring-green-600',
-            ghost: 'text-green-600 hover:bg-green-600/10 focus:ring-green-600',
-            link: 'text-green-600 hover:underline focus:ring-green-600',
+            filled: 'bg-green-600 text-white hover:bg-green-700',
+            outline: 'border-2 border-green-600 text-green-600 hover:bg-green-600/10',
+            ghost: 'text-green-600 hover:bg-green-600/10',
+            link: 'text-green-600 hover:underline',
         },
         warning: {
-            filled: 'bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500',
-            outline: 'border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500/10 focus:ring-yellow-500',
-            ghost: 'text-yellow-500 hover:bg-yellow-500/10 focus:ring-yellow-500',
-            link: 'text-yellow-500 hover:underline focus:ring-yellow-500',
+            filled: 'bg-yellow-500 text-white hover:bg-yellow-600',
+            outline: 'border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500/10',
+            ghost: 'text-yellow-500 hover:bg-yellow-500/10',
+            link: 'text-yellow-500 hover:underline',
         },
         destructive: {
-            filled: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-600',
-            outline: 'border-2 border-red-600 text-red-600 hover:bg-red-600/10 focus:ring-red-600',
-            ghost: 'text-red-600 hover:bg-red-600/10 focus:ring-red-600',
-            link: 'text-red-600 hover:underline focus:ring-red-600',
+            filled: 'bg-red-600 text-white hover:bg-red-700',
+            outline: 'border-2 border-red-600 text-red-600 hover:bg-red-600/10',
+            ghost: 'text-red-600 hover:bg-red-600/10',
+            link: 'text-red-600 hover:underline',
         },
     };
 
     // Link variant overrides padding/height
     const currentSizeStyle = variant === 'link' ? 'p-0 h-auto' : sizeStyles[size];
     const currentColorStyle = colorStyles[color][variant];
+    const currentIconSize = iconSizes[size];
 
     return (
         <button
             type="button"
-            className={`${baseStyles} ${currentSizeStyle} ${currentColorStyle} ${className}`}
+            className={`${baseStyles} ${currentSizeStyle} ${currentColorStyle}`}
             disabled={disabled || loading}
             {...props}
         >
@@ -100,7 +128,13 @@ export const Button = ({
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
             )}
+            {!loading && showStartIcon && startIcon && (
+                <span className={`material-icons ${currentIconSize} leading-none`}>{startIcon}</span>
+            )}
             {children}
+            {!loading && showEndIcon && endIcon && (
+                <span className={`material-icons ${currentIconSize} leading-none`}>{endIcon}</span>
+            )}
         </button>
     );
 };
