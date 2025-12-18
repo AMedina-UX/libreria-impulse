@@ -50,7 +50,7 @@ const Typography = () => {
 };
 
 const meta = {
-    title: 'Design System/Typography',
+    title: 'Fundamentos/Typography',
     component: Typography,
     parameters: {
         layout: 'fullscreen',

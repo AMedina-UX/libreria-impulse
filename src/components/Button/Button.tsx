@@ -129,11 +129,11 @@ export const Button = ({
                 </svg>
             )}
             {!loading && showStartIcon && startIcon && (
-                <span className={`material-icons ${currentIconSize} leading-none`}>{startIcon}</span>
+                <span className={`material-icons-round ${currentIconSize} leading-none`}>{startIcon}</span>
             )}
             {children}
             {!loading && showEndIcon && endIcon && (
-                <span className={`material-icons ${currentIconSize} leading-none`}>{endIcon}</span>
+                <span className={`material-icons-round ${currentIconSize} leading-none`}>{endIcon}</span>
             )}
         </button>
     );

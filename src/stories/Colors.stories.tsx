@@ -25,7 +25,7 @@ const ColorCard = ({ name, value, text, border }: { name: string, value: string,
 );
 
 const meta = {
-    title: 'Design System/Colors',
+    title: 'Fundamentos/Colors',
     parameters: {
         layout: 'fullscreen',
     },

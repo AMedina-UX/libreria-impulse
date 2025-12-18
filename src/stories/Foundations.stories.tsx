@@ -126,7 +126,7 @@ const FoundationsPage = () => {
 };
 
 const meta = {
-  title: 'Design System/Foundations',
+  title: 'Fundamentos/Foundations',
   component: FoundationsPage,
   parameters: {
     layout: 'fullscreen',
