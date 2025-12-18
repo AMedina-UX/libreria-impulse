@@ -72,9 +72,9 @@ export const Input = ({
     const isError = error || state === 'error';
 
     const sizeStyles = {
-        sm: 'h-[36px] text-xs px-2',
-        md: 'h-[40px] text-sm px-2',
-        lg: 'h-[48px] text-base px-2',
+        sm: 'h-[36px] text-sm px-2',
+        md: 'h-[40px] text-base px-2',
+        lg: 'h-[48px] text-lg px-2',
     };
 
     const iconSizes = {
@@ -85,15 +85,15 @@ export const Input = ({
 
     const labelSizes = {
         sm: 'text-xs',
-        md: 'text-sm',
-        lg: 'text-base',
+        md: 'text-xs',
+        lg: 'text-sm',
     };
 
     const baseContainerStyles = 'flex items-center gap-2 rounded-lg border transition-colors duration-200 overflow-hidden bg-white dark:bg-impulse-azul-900';
 
     // State styles for the CONTAINER
     const stateStyles = {
-        default: 'border-impulse-neutro-50 focus-within:border-impulse-azul-60 focus-within:ring-1 focus-within:ring-impulse-azul-60 dark:border-impulse-azul-400 dark:text-white',
+        default: 'border-impulse-neutro-50 hover:border-impulse-neutro-300 focus-within:border-impulse-celeste-100 focus-within:hover:border-impulse-celeste-100 dark:border-impulse-azul-400 dark:text-white',
         error: 'border-semantic-error-100 focus-within:ring-1 focus-within:ring-semantic-error-100 text-semantic-error-100',
         disabled: 'bg-impulse-neutro-20 border-impulse-neutro-50 cursor-not-allowed opacity-60 dark:bg-impulse-azul-800 dark:border-impulse-azul-700',
     };

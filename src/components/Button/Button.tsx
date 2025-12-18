@@ -53,7 +53,7 @@ export const Button = ({
     ...props
 }: Omit<ButtonProps, 'className'>) => {
 
-    const baseStyles = 'font-sans font-medium rounded-lg transition-colors focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center';
+    const baseStyles = 'group font-sans font-medium rounded-lg transition-colors focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center';
 
     const sizeStyles = {
         xs: 'h-[30px] px-[8px] gap-[4px] text-[12px] font-semibold',
@@ -76,37 +76,37 @@ export const Button = ({
             filled: 'bg-impulse-azul-60 text-white hover:bg-impulse-azul-80',
             outline: 'border-2 border-impulse-azul-60 text-impulse-azul-60 hover:bg-impulse-azul-60/10',
             ghost: 'text-impulse-azul-60 hover:bg-impulse-azul-60/10',
-            link: 'text-impulse-azul-60 hover:underline',
+            link: 'text-impulse-azul-60',
         },
         light: {
             filled: 'bg-impulse-neutro-10 text-impulse-neutro-900 hover:bg-impulse-neutro-20',
             outline: 'border-2 border-impulse-neutro-900 text-impulse-neutro-900 hover:bg-impulse-neutro-900/10',
             ghost: 'text-impulse-neutro-900 hover:bg-impulse-neutro-900/10',
-            link: 'text-impulse-neutro-900 hover:underline',
+            link: 'text-impulse-neutro-900',
         },
         accent: {
             filled: 'bg-impulse-acentuador-100 text-white hover:bg-impulse-acentuador-200',
             outline: 'border-2 border-impulse-acentuador-100 text-impulse-acentuador-100 hover:bg-impulse-acentuador-100/10',
             ghost: 'text-impulse-acentuador-100 hover:bg-impulse-acentuador-100/10',
-            link: 'text-impulse-acentuador-100 hover:underline',
+            link: 'text-impulse-acentuador-100',
         },
         success: {
             filled: 'bg-green-600 text-white hover:bg-green-700',
             outline: 'border-2 border-green-600 text-green-600 hover:bg-green-600/10',
             ghost: 'text-green-600 hover:bg-green-600/10',
-            link: 'text-green-600 hover:underline',
+            link: 'text-green-600',
         },
         warning: {
             filled: 'bg-yellow-500 text-white hover:bg-yellow-600',
             outline: 'border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500/10',
             ghost: 'text-yellow-500 hover:bg-yellow-500/10',
-            link: 'text-yellow-500 hover:underline',
+            link: 'text-yellow-500',
         },
         destructive: {
             filled: 'bg-red-600 text-white hover:bg-red-700',
             outline: 'border-2 border-red-600 text-red-600 hover:bg-red-600/10',
             ghost: 'text-red-600 hover:bg-red-600/10',
-            link: 'text-red-600 hover:underline',
+            link: 'text-red-600',
         },
     };
 
@@ -131,7 +131,7 @@ export const Button = ({
             {!loading && showStartIcon && startIcon && (
                 <span className={`material-icons-round ${currentIconSize} leading-none`}>{startIcon}</span>
             )}
-            {children}
+            <span className={variant === 'link' ? 'group-hover:underline' : ''}>{children}</span>
             {!loading && showEndIcon && endIcon && (
                 <span className={`material-icons-round ${currentIconSize} leading-none`}>{endIcon}</span>
             )}
