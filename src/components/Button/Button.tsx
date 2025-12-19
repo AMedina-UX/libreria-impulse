@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from '../../lib/utils';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     /**
@@ -37,6 +38,10 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
      * Whether to show the end icon
      */
     showEndIcon?: boolean;
+    /**
+     * Whether to force dark mode styles
+     */
+    darkMode?: boolean;
 }
 
 export const Button = ({
@@ -50,8 +55,10 @@ export const Button = ({
     endIcon = 'arrow_forward',
     showStartIcon = true,
     showEndIcon = true,
+    darkMode = false,
+    className,
     ...props
-}: Omit<ButtonProps, 'className'>) => {
+}: ButtonProps) => {
 
     const baseStyles = 'group font-sans font-medium rounded-lg transition-colors focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center';
 
@@ -71,42 +78,43 @@ export const Button = ({
         xl: '!text-[28px]',
     };
 
+    // Adding dark mode styles
     const colorStyles = {
         primary: {
-            filled: 'bg-impulse-azul-60 text-white hover:bg-impulse-azul-80',
-            outline: 'border-2 border-impulse-azul-60 text-impulse-azul-60 hover:bg-impulse-azul-60/10',
-            ghost: 'text-impulse-azul-60 hover:bg-impulse-azul-60/10',
-            link: 'text-impulse-azul-60',
+            filled: 'bg-impulse-celeste-100 text-white hover:bg-impulse-azul-100 dark:bg-impulse-azul-100 dark:hover:bg-impulse-azul-80',
+            outline: 'border-1 hover:border-2 border-impulse-celeste-100 text-impulse-celeste-100 hover:border-impulse-azul-100 hover:text-impulse-azul-100 dark:border-impulse-azul-100 dark:text-impulse-azul-100 dark:hover:border-impulse-azul-80 dark:hover:text-impulse-azul-80',
+            ghost: 'text-impulse-celeste-100 hover:bg-impulse-azul-100 hover:text-white dark:text-impulse-azul-100 dark:hover:bg-impulse-azul-100 dark:hover:text-white',
+            link: 'text-impulse-celeste-100 dark:text-impulse-azul-100',
         },
         light: {
-            filled: 'bg-impulse-neutro-10 text-impulse-neutro-900 hover:bg-impulse-neutro-20',
-            outline: 'border-2 border-impulse-neutro-900 text-impulse-neutro-900 hover:bg-impulse-neutro-900/10',
-            ghost: 'text-impulse-neutro-900 hover:bg-impulse-neutro-900/10',
-            link: 'text-impulse-neutro-900',
+            filled: 'bg-impulse-celeste-20 text-impulse-azul-300 hover:bg-impulse-celeste-40 dark:bg-impulse-neutro-800 dark:text-impulse-neutro-100 dark:hover:bg-impulse-neutro-700',
+            outline: 'border-1 hover:border-2 border-impulse-neutro-900 text-impulse-neutro-900 hover:bg-impulse-neutro-900/10 dark:border-impulse-neutro-100 dark:text-impulse-neutro-100 dark:hover:bg-impulse-neutro-100/10',
+            ghost: 'text-impulse-neutro-900 hover:bg-impulse-neutro-900/10 dark:text-impulse-neutro-100 dark:hover:bg-impulse-neutro-100/10',
+            link: 'text-impulse-neutro-900 dark:text-impulse-neutro-100',
         },
         accent: {
-            filled: 'bg-impulse-acentuador-100 text-white hover:bg-impulse-acentuador-200',
-            outline: 'border-2 border-impulse-acentuador-100 text-impulse-acentuador-100 hover:bg-impulse-acentuador-100/10',
-            ghost: 'text-impulse-acentuador-100 hover:bg-impulse-acentuador-100/10',
-            link: 'text-impulse-acentuador-100',
+            filled: 'bg-impulse-acentuador-100 text-white hover:bg-impulse-acentuador-200 dark:bg-impulse-acentuador-200 dark:hover:bg-impulse-acentuador-100',
+            outline: 'border-1 hover:border-2 border-impulse-acentuador-100 text-impulse-acentuador-100 hover:bg-impulse-acentuador-100/10 dark:border-impulse-acentuador-200 dark:text-impulse-acentuador-200 dark:hover:bg-impulse-acentuador-200/10',
+            ghost: 'text-impulse-acentuador-100 hover:bg-impulse-acentuador-100/10 dark:text-impulse-acentuador-200 dark:hover:bg-impulse-acentuador-200/10',
+            link: 'text-impulse-acentuador-100 dark:text-impulse-acentuador-200',
         },
         success: {
-            filled: 'bg-green-600 text-white hover:bg-green-700',
-            outline: 'border-2 border-green-600 text-green-600 hover:bg-green-600/10',
-            ghost: 'text-green-600 hover:bg-green-600/10',
-            link: 'text-green-600',
+            filled: 'bg-green-600 text-white hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600',
+            outline: 'border-1 hover:border-2 border-green-600 text-green-600 hover:bg-green-600/10 dark:border-green-500 dark:text-green-500 dark:hover:bg-green-500/10',
+            ghost: 'text-green-600 hover:bg-green-600/10 dark:text-green-500 dark:hover:bg-green-500/10',
+            link: 'text-green-600 dark:text-green-500',
         },
         warning: {
-            filled: 'bg-yellow-500 text-white hover:bg-yellow-600',
-            outline: 'border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500/10',
-            ghost: 'text-yellow-500 hover:bg-yellow-500/10',
-            link: 'text-yellow-500',
+            filled: 'bg-yellow-500 text-white hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-500',
+            outline: 'border-1 hover:border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500/10 dark:border-yellow-400 dark:text-yellow-400 dark:hover:bg-yellow-400/10',
+            ghost: 'text-yellow-500 hover:bg-yellow-500/10 dark:text-yellow-400 dark:hover:bg-yellow-400/10',
+            link: 'text-yellow-500 dark:text-yellow-400',
         },
         destructive: {
-            filled: 'bg-red-600 text-white hover:bg-red-700',
-            outline: 'border-2 border-red-600 text-red-600 hover:bg-red-600/10',
-            ghost: 'text-red-600 hover:bg-red-600/10',
-            link: 'text-red-600',
+            filled: 'bg-red-600 text-white hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-600',
+            outline: 'border-1 hover:border-2 border-red-600 text-red-600 hover:bg-red-600/10 dark:border-red-500 dark:text-red-500 dark:hover:bg-red-500/10',
+            ghost: 'text-red-600 hover:bg-red-600/10 dark:text-red-500 dark:hover:bg-red-500/10',
+            link: 'text-red-600 dark:text-red-500',
         },
     };
 
@@ -118,7 +126,13 @@ export const Button = ({
     return (
         <button
             type="button"
-            className={`${baseStyles} ${currentSizeStyle} ${currentColorStyle}`}
+            className={cn(
+                baseStyles,
+                currentSizeStyle,
+                currentColorStyle,
+                darkMode && "dark",
+                className
+            )}
             disabled={disabled || loading}
             {...props}
         >

@@ -36,6 +36,9 @@ const meta = {
         showEndIcon: {
             control: 'boolean',
         },
+        darkMode: {
+            control: 'boolean',
+        },
     },
 } satisfies Meta<typeof Button>;
 
@@ -52,6 +55,7 @@ export const Primary: Story = {
         endIcon: 'arrow_forward',
         showStartIcon: true,
         showEndIcon: true,
+        darkMode: false,
     },
 };
 
@@ -118,6 +122,36 @@ export const AllColors: Story = {
         </div>
     ),
     args: {
+        children: 'Button',
+        size: 'md',
+        showStartIcon: true,
+        showEndIcon: true,
+    },
+};
+
+export const DarkMode: Story = {
+    parameters: {
+        backgrounds: { default: 'dark' },
+    },
+    render: (args) => (
+        <div className="bg-impulse-azul-700 p-8 rounded-xl flex flex-col gap-4">
+            <h3 className="text-white mb-2">Forced Dark Mode (Prop)</h3>
+            <div className="flex gap-4 items-center">
+                <Button {...args} darkMode={true} variant="filled">Filled</Button>
+                <Button {...args} darkMode={true} variant="outline">Outline</Button>
+                <Button {...args} darkMode={true} variant="ghost">Ghost</Button>
+                <Button {...args} darkMode={true} variant="link">Link</Button>
+            </div>
+            <h3 className="text-white mb-2 mt-4">Light Mode (Default)</h3>
+            <div className="flex gap-4 items-center">
+                <Button {...args} variant="filled">Filled</Button>
+                <Button {...args} variant="outline">Outline</Button>
+                <Button {...args} variant="ghost">Ghost</Button>
+            </div>
+        </div>
+    ),
+    args: {
+        color: 'primary',
         children: 'Button',
         size: 'md',
         showStartIcon: true,

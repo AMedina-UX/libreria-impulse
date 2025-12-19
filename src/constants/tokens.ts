@@ -6,6 +6,7 @@ export const baseColors = [
 export const impulseAzul = [
     { name: 'Azul 60', value: 'var(--color-impulse-azul-60)', text: '#ffffff' },
     { name: 'Azul 80', value: 'var(--color-impulse-azul-80)', text: '#ffffff' },
+    { name: 'Azul 100', value: 'var(--color-impulse-azul-100)', text: '#ffffff' },
     { name: 'Azul 200', value: 'var(--color-impulse-azul-200)', text: '#ffffff' },
     { name: 'Azul 300', value: 'var(--color-impulse-azul-300)', text: '#ffffff' },
     { name: 'Azul 400', value: 'var(--color-impulse-azul-400)', text: '#ffffff' },

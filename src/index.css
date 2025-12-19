@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
     --color-impulse-azul-60: #1674FF;
     --color-impulse-azul-80: #045FE6;
+    --color-impulse-azul-100: #0256B6;
     --color-impulse-azul-200: #034291;
     --color-impulse-azul-300: #04255B;
     --color-impulse-azul-400: #05224D;
@@ -133,6 +135,7 @@
     /* Impulse Palette - Azul */
     --color-impulse-azul-60: #1674FF;
     --color-impulse-azul-80: #045FE6;
+    --color-impulse-azul-100: #0256B6;
     --color-impulse-azul-200: #034291;
     --color-impulse-azul-300: #04255B;
     --color-impulse-azul-400: #05224D;

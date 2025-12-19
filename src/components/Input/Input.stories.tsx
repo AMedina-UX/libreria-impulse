@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+// Force reload
 import { Input } from './Input';
 
 const meta = {
@@ -21,6 +22,7 @@ const meta = {
         showStartIcon: { control: 'boolean' },
         showEndIcon: { control: 'boolean' },
         error: { control: 'boolean' },
+        darkMode: { control: 'boolean' },
     },
 } satisfies Meta<typeof Input>;
 
@@ -42,7 +44,11 @@ export const Playground: Story = {
         showEndIcon: true,
         helperText: 'Helper text',
     },
-    render: (args) => <div className="w-[300px]"><Input {...args} /></div>
+    render: (args) => (
+        <div className={`${args.darkMode ? 'bg-impulse-azul-900 p-8 rounded-xl transition-colors duration-200 w-[332px]' : ''}`}>
+            <Input {...args} />
+        </div>
+    )
 };
 
 export const Sizes: Story = {
