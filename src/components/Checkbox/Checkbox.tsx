@@ -27,21 +27,6 @@ export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputE
     error?: boolean;
 }
 
-const CheckIcon = ({ className }: { className?: string }) => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-    >
-        <polyline points="20 6 9 17 4 12" />
-    </svg>
-);
-
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(({
     className,
     size = 'm',
@@ -58,22 +43,19 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(({
     const sizes = {
         s: {
             container: "gap-2",
-            box: "w-4 h-4 rounded-[4px]",
-            icon: "w-3 h-3",
+            icon: "text-[20px]",
             label: "text-xs",
             halo: "before:w-8 before:h-8",
         },
         m: {
             container: "gap-2.5",
-            box: "w-5 h-5 rounded-[4px]",
-            icon: "w-3.5 h-3.5",
+            icon: "text-[24px]",
             label: "text-sm",
             halo: "before:w-10 before:h-10",
         },
         l: {
             container: "gap-3",
-            box: "w-6 h-6 rounded-[6px]",
-            icon: "w-4 h-4",
+            icon: "text-[28px]",
             label: "text-base",
             halo: "before:w-12 before:h-12",
         },
@@ -81,34 +63,31 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(({
 
     const colors = {
         primary: {
-            // Updated to match reference: Unchecked border is neutral, Checked is Azul 60 (Brighter Blue)
-            border: "border-impulse-neutro-400 dark:border-impulse-neutro-200",
-            bgChecked: "bg-impulse-azul-60 dark:bg-impulse-azul-60",
-            borderChecked: "border-impulse-azul-60 dark:border-impulse-azul-60",
+            // Unchecked: Neutral gray
+            unchecked: "text-impulse-neutro-400 dark:text-impulse-neutro-200",
+            // Checked: Brand color
+            checked: "text-impulse-azul-60 dark:text-impulse-azul-60",
             hoverHalo: "group-hover:before:bg-impulse-azul-60/10 dark:group-hover:before:bg-impulse-azul-60/20",
         },
         gray: {
-            border: "border-impulse-neutro-400 dark:border-impulse-neutro-400",
-            bgChecked: "bg-impulse-neutro-600 dark:bg-impulse-neutro-600",
-            borderChecked: "border-impulse-neutro-600 dark:border-impulse-neutro-600",
+            unchecked: "text-impulse-neutro-400 dark:text-impulse-neutro-400",
+            checked: "text-impulse-neutro-600 dark:text-impulse-neutro-600",
             hoverHalo: "group-hover:before:bg-impulse-neutro-600/10 dark:group-hover:before:bg-impulse-neutro-400/20",
         },
         green: {
-            border: "border-semantic-exito-100 dark:border-semantic-exito-100",
-            bgChecked: "bg-semantic-exito-100 dark:bg-semantic-exito-100",
-            borderChecked: "border-semantic-exito-100 dark:border-semantic-exito-100",
+            unchecked: "text-impulse-neutro-400 dark:text-impulse-neutro-200", // Keep unchecked neutral usually? Or "text-semantic-exito-100" if we want colored borders? Sticking to design pattern where unchecked is gray usually.
+            // Actually usually colored checkboxes might want colored border. Let's stick to neutral unchecked for now unless specified.
+            checked: "text-semantic-exito-100 dark:text-semantic-exito-100",
             hoverHalo: "group-hover:before:bg-semantic-exito-100/10 dark:group-hover:before:bg-semantic-exito-100/20",
         },
         yellow: {
-            border: "border-semantic-advertencia-100 dark:border-semantic-advertencia-100",
-            bgChecked: "bg-semantic-advertencia-100 dark:bg-semantic-advertencia-100",
-            borderChecked: "border-semantic-advertencia-100 dark:border-semantic-advertencia-100",
+            unchecked: "text-impulse-neutro-400 dark:text-impulse-neutro-200",
+            checked: "text-semantic-advertencia-100 dark:text-semantic-advertencia-100",
             hoverHalo: "group-hover:before:bg-semantic-advertencia-100/10 dark:group-hover:before:bg-semantic-advertencia-100/20",
         },
         red: {
-            border: "border-semantic-error-100 dark:border-semantic-error-100",
-            bgChecked: "bg-semantic-error-100 dark:bg-semantic-error-100",
-            borderChecked: "border-semantic-error-100 dark:border-semantic-error-100",
+            unchecked: "text-impulse-neutro-400 dark:text-impulse-neutro-200",
+            checked: "text-semantic-error-100 dark:text-semantic-error-100",
             hoverHalo: "group-hover:before:bg-semantic-error-100/10 dark:group-hover:before:bg-semantic-error-100/20",
         },
     };
@@ -126,7 +105,16 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(({
                 className
             )}
         >
-            <div className="relative flex items-center justify-center">
+            <div className={cn(
+                "relative flex items-center justify-center rounded-full",
+                // Halo (Hover Effect) - moved to this container
+                "before:content-[''] before:absolute before:rounded-full before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2",
+                "before:opacity-0 before:transition-opacity before:duration-200",
+                "before:-z-10", // Ensure halo is behind
+                currentSize.halo,
+                !disabled && currentColor.hoverHalo,
+                !disabled && "group-hover:before:opacity-100"
+            )}>
                 <input
                     type="checkbox"
                     id={inputId}
@@ -136,47 +124,34 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(({
                     {...props}
                 />
 
-                {/* Visual Checkbox */}
-                <div className={cn(
-                    "flex items-center justify-center transition-all duration-200 ease-in-out border-2",
-
-                    // Size
-                    currentSize.box,
-
-                    // Default State (Unchecked)
-                    "bg-transparent",
-                    currentColor.border,
-
-                    // Checked State
-                    `peer-checked:${currentColor.bgChecked}`,
-                    `peer-checked:${currentColor.borderChecked}`,
-                    "peer-checked:text-white",
-
-                    // Halo (Hover Effect)
-                    "before:content-[''] before:absolute before:rounded-full before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2",
-                    "before:opacity-0 before:transition-opacity before:duration-200",
-                    "before:-z-10", // Ensure halo is behind
-                    currentSize.halo,
-                    !disabled && currentColor.hoverHalo,
-                    !disabled && "group-hover:before:opacity-100", // Using group-hover for reliable trigger
-
-                    // Focus State (Using focus-visible on the hidden input to style the sibling)
-                    "peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-impulse-azul-100",
-
-                    // Disabled Style Overrides
-                    disabled && "border-impulse-neutro-200 bg-impulse-neutro-50 dark:border-impulse-neutro-700 dark:bg-impulse-neutro-800",
-                    disabled && "peer-checked:bg-impulse-neutro-300 peer-checked:border-impulse-neutro-300 dark:peer-checked:bg-impulse-neutro-600 dark:peer-checked:border-impulse-neutro-600",
-
-                    // Interactive Scale
-                    !disabled && "peer-active:scale-95"
+                {/* Unchecked Icon - Visible by default, hidden when checked */}
+                <span className={cn(
+                    "material-icons-round select-none transition-transform duration-200",
+                    currentSize.icon,
+                    currentColor.unchecked,
+                    "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2", // Center absolute
+                    "scale-100 opacity-100", // Default visible
+                    "peer-checked:scale-0 peer-checked:opacity-0", // Hide when checked
+                    disabled && "text-impulse-neutro-200 dark:text-impulse-neutro-600"
                 )}>
-                    <CheckIcon className={cn(
-                        "transition-transform duration-200",
-                        "scale-0 opacity-0",
-                        "peer-checked:scale-100 peer-checked:opacity-100",
-                        currentSize.icon
-                    )} />
-                </div>
+                    check_box_outline_blank
+                </span>
+
+                {/* Checked Icon - Hidden by default, visible when checked */}
+                <span className={cn(
+                    "material-icons-round select-none transition-transform duration-200",
+                    currentSize.icon,
+                    currentColor.checked,
+                    "relative", // Keeps the size of the container
+                    "scale-0 opacity-0", // Default hidden
+                    "peer-checked:scale-100 peer-checked:opacity-100", // Show when checked
+                    disabled && "text-impulse-neutro-300 dark:text-impulse-neutro-500"
+                )}>
+                    check_box
+                </span>
+
+                {/* Focus Ring Helper - Absolute overlay to show focus ring since input is hidden */}
+                <div className="absolute inset-0 rounded-sm pointer-events-none peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-impulse-azul-100"></div>
             </div>
 
             {label && (

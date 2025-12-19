@@ -81,16 +81,16 @@ export const Button = ({
     // Adding dark mode styles
     const colorStyles = {
         primary: {
-            filled: 'bg-impulse-celeste-100 text-white hover:bg-impulse-azul-100 dark:bg-impulse-azul-100 dark:hover:bg-impulse-azul-80',
-            outline: 'border-1 hover:border-2 border-impulse-celeste-100 text-impulse-celeste-100 hover:border-impulse-azul-100 hover:text-impulse-azul-100 dark:border-impulse-azul-100 dark:text-impulse-azul-100 dark:hover:border-impulse-azul-80 dark:hover:text-impulse-azul-80',
-            ghost: 'text-impulse-celeste-100 hover:bg-impulse-azul-100 hover:text-white dark:text-impulse-azul-100 dark:hover:bg-impulse-azul-100 dark:hover:text-white',
-            link: 'text-impulse-celeste-100 dark:text-impulse-azul-100',
+            filled: 'bg-impulse-celeste-100 text-white hover:bg-impulse-azul-100 dark:bg-impulse-celeste-100 dark:hover:bg-impulse-celeste-80',
+            outline: 'border-1 hover:border-2 border-impulse-celeste-100 text-impulse-celeste-100 hover:border-impulse-azul-100 hover:text-impulse-azul-100 dark:border-impulse-celeste-100 dark:text-impulse-celeste-100 dark:hover:border-impulse-celeste-80 dark:hover:text-impulse-celeste-80',
+            ghost: 'text-impulse-celeste-100 hover:bg-impulse-azul-100 hover:text-white dark:text-impulse-celeste-100 dark:hover:bg-impulse-celeste-100 dark:hover:text-white',
+            link: 'text-impulse-celeste-100 gap-2 dark:text-impulse-celeste-100',
         },
         light: {
-            filled: 'bg-impulse-celeste-20 text-impulse-azul-300 hover:bg-impulse-celeste-40 dark:bg-impulse-neutro-800 dark:text-impulse-neutro-100 dark:hover:bg-impulse-neutro-700',
-            outline: 'border-1 hover:border-2 border-impulse-neutro-900 text-impulse-neutro-900 hover:bg-impulse-neutro-900/10 dark:border-impulse-neutro-100 dark:text-impulse-neutro-100 dark:hover:bg-impulse-neutro-100/10',
-            ghost: 'text-impulse-neutro-900 hover:bg-impulse-neutro-900/10 dark:text-impulse-neutro-100 dark:hover:bg-impulse-neutro-100/10',
-            link: 'text-impulse-neutro-900 dark:text-impulse-neutro-100',
+            filled: 'bg-impulse-celeste-20 text-impulse-azul-300 hover:bg-impulse-celeste-40 dark:bg-white dark:text-impulse-azul-300 dark:hover:bg-impulse-celeste-30',
+            outline: 'border-1 hover:border-2 border-impulse-neutro-900 text-impulse-neutro-900 hover:bg-impulse-neutro-900/10 dark:border-white dark:text-white dark:hover:bg-impulse-celeste-100/20',
+            ghost: 'text-impulse-neutro-900 hover:bg-impulse-neutro-900/10 dark:text-white dark:hover:bg-impulse-azul-200',
+            link: 'text-impulse-celeste-100 gap-2 dark:text-white',
         },
         accent: {
             filled: 'bg-impulse-acentuador-100 text-white hover:bg-impulse-acentuador-200 dark:bg-impulse-acentuador-200 dark:hover:bg-impulse-acentuador-100',
