@@ -99,7 +99,7 @@ export const Input = ({
 
     // State styles for the CONTAINER
     const stateStyles = {
-        default: 'dark:bg-transparent border-impulse-neutro-100 hover:border-impulse-neutro-300 focus-within:border-impulse-celeste-100 focus-within:hover:border-impulse-celeste-100 dark:border-impulse-neutro-100 dark:text-white dark:hover:border-white dark:focus-within:border-white focus-within:hover:border-white',
+        default: 'dark:bg-transparent border-impulse-neutro-100 hover:border-impulse-neutro-300 focus-within:border-impulse-celeste-100 focus-within:hover:border-impulse-celeste-100 dark:border-impulse-neutro-100 dark:text-white dark:hover:border-white dark:focus-within:border-white dark:focus-within:hover:border-white',
         error: 'border-semantic-error-100 focus-within:ring-1 focus-within:ring-semantic-error-100 text-semantic-error-100',
         disabled: 'bg-impulse-neutro-20 border-impulse-neutro-50 cursor-not-allowed opacity-60 dark:bg-impulse-azul-800 dark:border-impulse-azul-700',
     };

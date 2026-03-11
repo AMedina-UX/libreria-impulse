@@ -96,6 +96,7 @@
 
 
 :root {
+    --drop-shadow-tooltip: 0 0 0 1px rgba(0, 0, 0, 0.25);
     /* Primary - Blue */
     --color-primary: var(--color-impulse-azul-60);
     --color-primary-foreground: #ffffff;
@@ -168,3 +169,5 @@
     --color-background: #ffffff;
     --color-foreground: #0f172a;
 }
+
+/* Force reload */

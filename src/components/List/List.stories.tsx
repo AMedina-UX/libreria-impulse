@@ -78,12 +78,12 @@ type Story = StoryObj<ListItemStoryArgs>;
 const Monogram = () => <Avatar fallback="A" size="md" className="bg-impulse-azul-100 text-white w-full h-full text-lg" />;
 const Icon = ({ name }: { name: string }) => <span className="material-icons-round text-2xl">{name}</span>;
 const ImagePlaceholder = () => (
-    <div className="w-14 h-14 bg-impulse-neutro-200 rounded flex items-center justify-center">
+    <div className="w-10 h-10 bg-impulse-neutro-200 rounded flex items-center justify-center">
         <span className="material-icons-round text-impulse-neutro-400">image</span>
     </div>
 );
 const VideoPlaceholder = () => (
-    <div className="w-[100px] h-14 bg-impulse-neutro-200 rounded flex items-center justify-center">
+    <div className="w-[114px] h-[64px] bg-impulse-neutro-200 rounded flex items-center justify-center">
         <span className="material-icons-round text-impulse-neutro-400">play_circle</span>
     </div>
 );
