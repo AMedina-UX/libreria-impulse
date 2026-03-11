@@ -1,7 +1,5 @@
 import React from 'react';
 import { cn } from '../../lib/utils';
-// Note: Imports below are for reference to tokens if needed, but we use the class names directly for now
-// to ensure we match the token system as used in the project configuration.
 
 export type CheckboxSize = 's' | 'm' | 'l';
 export type CheckboxColor = 'primary' | 'gray' | 'green' | 'yellow' | 'red';
@@ -25,6 +23,10 @@ export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputE
      * Whether the checkbox is in an error state
      */
     error?: boolean;
+    /**
+     * Optional dark mode override
+     */
+    darkMode?: boolean;
 }
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(({
@@ -33,6 +35,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(({
     color = 'primary',
     label,
     disabled = false,
+    darkMode = false,
     id,
     ...props
 }, ref) => {
@@ -40,55 +43,54 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(({
     const generatedId = React.useId();
     const inputId = id || generatedId;
 
+    // Figma specific sizes
     const sizes = {
         s: {
             container: "gap-2",
-            icon: "text-[20px]",
-            label: "text-xs",
-            halo: "before:w-8 before:h-8",
+            icon: "!text-[20px]",
+            label: "text-sm",
+            halo: "w-[36px] h-[36px]",
         },
         m: {
             container: "gap-2.5",
-            icon: "text-[24px]",
+            icon: "!text-[24px]",
             label: "text-sm",
-            halo: "before:w-10 before:h-10",
+            halo: "w-[40px] h-[40px]",
         },
         l: {
             container: "gap-3",
-            icon: "text-[28px]",
-            label: "text-base",
-            halo: "before:w-12 before:h-12",
+            icon: "!text-[28px]",
+            label: "text-sm",
+            halo: "w-[44px] h-[44px]",
         },
     };
 
+    // New color specifications: The unchecked border should match the theme color
     const colors = {
         primary: {
-            // Unchecked: Neutral gray
-            unchecked: "text-impulse-neutro-400 dark:text-impulse-neutro-200",
-            // Checked: Brand color
+            unchecked: "text-impulse-azul-60 dark:text-impulse-azul-60",
             checked: "text-impulse-azul-60 dark:text-impulse-azul-60",
-            hoverHalo: "group-hover:before:bg-impulse-azul-60/10 dark:group-hover:before:bg-impulse-azul-60/20",
+            hoverHalo: "group-hover:bg-impulse-azul-60/10 dark:group-hover:bg-impulse-azul-60/20",
         },
         gray: {
-            unchecked: "text-impulse-neutro-400 dark:text-impulse-neutro-400",
-            checked: "text-impulse-neutro-600 dark:text-impulse-neutro-600",
-            hoverHalo: "group-hover:before:bg-impulse-neutro-600/10 dark:group-hover:before:bg-impulse-neutro-400/20",
+            unchecked: "text-impulse-neutro-300 dark:text-impulse-neutro-100",
+            checked: "text-impulse-neutro-900 dark:text-impulse-neutro-100",
+            hoverHalo: "group-hover:bg-impulse-neutro-400/10 dark:group-hover:bg-impulse-neutro-100/20",
         },
         green: {
-            unchecked: "text-impulse-neutro-400 dark:text-impulse-neutro-200", // Keep unchecked neutral usually? Or "text-semantic-exito-100" if we want colored borders? Sticking to design pattern where unchecked is gray usually.
-            // Actually usually colored checkboxes might want colored border. Let's stick to neutral unchecked for now unless specified.
+            unchecked: "text-semantic-exito-100 dark:text-semantic-exito-100",
             checked: "text-semantic-exito-100 dark:text-semantic-exito-100",
-            hoverHalo: "group-hover:before:bg-semantic-exito-100/10 dark:group-hover:before:bg-semantic-exito-100/20",
+            hoverHalo: "group-hover:bg-semantic-exito-100/10 dark:group-hover:bg-semantic-exito-100/20",
         },
         yellow: {
-            unchecked: "text-impulse-neutro-400 dark:text-impulse-neutro-200",
+            unchecked: "text-semantic-advertencia-100 dark:text-semantic-advertencia-100",
             checked: "text-semantic-advertencia-100 dark:text-semantic-advertencia-100",
-            hoverHalo: "group-hover:before:bg-semantic-advertencia-100/10 dark:group-hover:before:bg-semantic-advertencia-100/20",
+            hoverHalo: "group-hover:bg-semantic-advertencia-100/10 dark:group-hover:bg-semantic-advertencia-100/20",
         },
         red: {
-            unchecked: "text-impulse-neutro-400 dark:text-impulse-neutro-200",
+            unchecked: "text-semantic-error-100 dark:text-semantic-error-100",
             checked: "text-semantic-error-100 dark:text-semantic-error-100",
-            hoverHalo: "group-hover:before:bg-semantic-error-100/10 dark:group-hover:before:bg-semantic-error-100/20",
+            hoverHalo: "group-hover:bg-semantic-error-100/10 dark:group-hover:bg-semantic-error-100/20",
         },
     };
 
@@ -106,14 +108,10 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(({
             )}
         >
             <div className={cn(
-                "relative flex items-center justify-center rounded-full",
-                // Halo (Hover Effect) - moved to this container
-                "before:content-[''] before:absolute before:rounded-full before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2",
-                "before:opacity-0 before:transition-opacity before:duration-200",
-                "before:-z-10", // Ensure halo is behind
+                "relative flex items-center justify-center rounded-full transition-colors duration-200",
+                darkMode && "dark",
                 currentSize.halo,
-                !disabled && currentColor.hoverHalo,
-                !disabled && "group-hover:before:opacity-100"
+                !disabled && currentColor.hoverHalo
             )}>
                 <input
                     type="checkbox"
@@ -129,9 +127,9 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(({
                     "material-icons-round select-none transition-transform duration-200",
                     currentSize.icon,
                     currentColor.unchecked,
-                    "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2", // Center absolute
-                    "scale-100 opacity-100", // Default visible
-                    "peer-checked:scale-0 peer-checked:opacity-0", // Hide when checked
+                    "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
+                    "scale-100 opacity-100",
+                    "peer-checked:scale-0 peer-checked:opacity-0",
                     disabled && "text-impulse-neutro-200 dark:text-impulse-neutro-600"
                 )}>
                     check_box_outline_blank
@@ -142,22 +140,22 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(({
                     "material-icons-round select-none transition-transform duration-200",
                     currentSize.icon,
                     currentColor.checked,
-                    "relative", // Keeps the size of the container
-                    "scale-0 opacity-0", // Default hidden
-                    "peer-checked:scale-100 peer-checked:opacity-100", // Show when checked
+                    "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
+                    "scale-0 opacity-0",
+                    "peer-checked:scale-100 peer-checked:opacity-100",
                     disabled && "text-impulse-neutro-300 dark:text-impulse-neutro-500"
                 )}>
                     check_box
                 </span>
 
                 {/* Focus Ring Helper - Absolute overlay to show focus ring since input is hidden */}
-                <div className="absolute inset-0 rounded-sm pointer-events-none peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-impulse-azul-100"></div>
+                <div className="absolute inset-0 rounded-full pointer-events-none peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-impulse-azul-100"></div>
             </div>
 
             {label && (
                 <span className={cn(
-                    "font-normal text-impulse-neutro-900 dark:text-impulse-neutro-100 select-none",
-                    disabled && "cursor-not-allowed",
+                    "font-normal text-impulse-neutro-900 select-none",
+                    disabled && "text-impulse-neutro-400",
                     currentSize.label
                 )}>
                     {label}

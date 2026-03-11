@@ -26,6 +26,10 @@ const meta = {
             control: 'boolean',
             description: 'Whether the checkbox is checked',
         },
+        darkMode: {
+            control: 'boolean',
+            description: 'Force dark mode styles',
+        },
         label: {
             control: 'text',
         }

@@ -54,7 +54,7 @@ export const Breadcrumbs = ({
 
     return (
         <nav aria-label="Breadcrumb" className={cn("flex items-center", className)}>
-            <ol className="flex items-center space-x-2">
+            <ol className="flex items-center">
                 {items.map((item, index) => {
                     const isLast = index === items.length - 1;
                     const isActive = item.active ?? isLast;
@@ -80,7 +80,7 @@ export const Breadcrumbs = ({
                     );
 
                     const separatorClasses = cn(
-                        "text-impulse-neutro-100 dark:text-impulse-neutro-300 mx-1",
+                        "flex items-center justify-center text-impulse-neutro-100 dark:text-impulse-neutro-300 mx-1",
                         separatorSize
                     );
 
@@ -96,7 +96,7 @@ export const Breadcrumbs = ({
                                 className={itemClasses}
                                 aria-current={isActive ? 'page' : undefined}
                             >
-                                {item.icon && <span className={iconSize}>{item.icon}</span>}
+                                {item.icon && <span className={cn("flex items-center justify-center", iconSize)}>{item.icon}</span>}
                                 <span>{item.label}</span>
                             </span>
                         </li>
