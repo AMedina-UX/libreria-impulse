@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '../../lib/utils';
+import { Avatar } from '../Avatar/Avatar';
 
 export type ListItemLeadingType = 'monogram' | 'icon' | 'image' | 'video';
 
@@ -14,6 +15,7 @@ export interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {
     supportingText?: string;
     /**
      * Element to display at the start of the item (Avatar, Icon, Image, primitive).
+     * If omitted and leadingType is 'monogram', an Avatar is rendered automatically.
      */
     leading?: React.ReactNode;
     /**
@@ -21,6 +23,11 @@ export interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {
      * @default 'icon'
      */
     leadingType?: ListItemLeadingType;
+    /**
+     * Initials shown in the Avatar when leadingType is 'monogram' and no custom leading is provided.
+     * @default 'UX'
+     */
+    monogramInitials?: string;
     /**
      * Element to display at the end of the item (Icon, meta text).
      */
@@ -51,6 +58,7 @@ export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>(({
     supportingText,
     leading,
     leadingType = 'icon',
+    monogramInitials = 'UX',
     trailing,
     divider = false,
     disabled = false,
@@ -62,6 +70,12 @@ export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>(({
 
     // Determine min-height based on content
     const minHeightClass = !supportingText ? 'min-h-[56px]' : lines === 3 ? 'min-h-[88px]' : 'min-h-[72px]';
+
+    // Si el tipo es monogram y no se pasa leading custom, usamos Avatar automáticamente
+    const resolvedLeading: React.ReactNode =
+        leadingType === 'monogram' && !leading
+            ? <Avatar estilo="Monograma" tamano="md" initials={monogramInitials} />
+            : leading;
 
     const leadingTypeStyles = {
         monogram: "w-10 h-10 rounded-full",
@@ -91,12 +105,12 @@ export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>(({
             {...props}
         >
             {/* Leading Slot */}
-            {leading && (
+            {resolvedLeading && (
                 <div className={cn(
                     "shrink-0 flex items-center justify-center overflow-hidden text-impulse-neutro-600 dark:text-impulse-neutro-300",
                     leadingTypeStyles[leadingType]
                 )}>
-                    {leading}
+                    {resolvedLeading}
                 </div>
             )}
 

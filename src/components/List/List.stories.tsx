@@ -2,7 +2,6 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { List } from './List';
 import { ListItem } from './ListItem';
-import { Avatar } from '../Avatar/Avatar';
 
 type ListItemStoryArgs = React.ComponentProps<typeof ListItem> & {
     showLeading?: boolean;
@@ -66,6 +65,12 @@ const meta = {
 
         // General
         headline: { control: 'text' },
+        monogramInitials: {
+            control: 'text',
+            description: 'Iniciales del Avatar cuando el tipo es monogram',
+            if: { arg: 'leadingType', eq: 'monogram' },
+            table: { category: 'Leading' },
+        },
         divider: { control: 'boolean' },
         disabled: { control: 'boolean' },
     },
@@ -75,7 +80,6 @@ export default meta;
 type Story = StoryObj<ListItemStoryArgs>;
 
 // --- Mocks ---
-const Monogram = () => <Avatar fallback="A" size="md" className="bg-impulse-azul-100 text-white w-full h-full text-lg" />;
 const Icon = ({ name }: { name: string }) => <span className="material-icons-round text-2xl">{name}</span>;
 const ImagePlaceholder = () => (
     <div className="w-10 h-10 bg-impulse-neutro-200 rounded flex items-center justify-center">
@@ -112,6 +116,7 @@ export const Playground: Story = {
             showSupportingText,
             trailingIcon,
             supportingText,
+            monogramInitials,
             ...props
         } = args;
 
@@ -120,7 +125,8 @@ export const Playground: Story = {
         if (showLeading) {
             switch (args.leadingType) {
                 case 'monogram':
-                    leadingContent = <Monogram />;
+                    // Avatar se renderiza automáticamente en ListItem — no necesitamos pasarlo
+                    leadingContent = null;
                     break;
                 case 'icon':
                     leadingContent = <Icon name="person" />;
@@ -148,6 +154,7 @@ export const Playground: Story = {
                         leading={leadingContent}
                         trailing={trailingContent}
                         supportingText={textContent}
+                        monogramInitials={monogramInitials}
                     />
                 </List>
             </div>

@@ -1,22 +1,39 @@
 {
-  "name": "test",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@impulse/ui",
+  "private": false,
+  "version": "0.1.0",
+  "description": "Impulse UI component library",
   "type": "module",
+  "main": "./dist/impulse-ui.umd.cjs",
+  "module": "./dist/impulse-ui.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/impulse-ui.js",
+      "require": "./dist/impulse-ui.umd.cjs"
+    },
+    "./styles": "./dist/impulse-ui.css"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:lib": "tsc -p tsconfig.lib.json && vite build --config vite.lib.config.ts",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "chromatic"
   },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.17",
     "clsx": "^2.1.1",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
@@ -28,6 +45,7 @@
     "@storybook/addon-vitest": "^10.0.8",
     "@storybook/react-vite": "^10.0.8",
     "@tailwindcss/postcss": "^4.1.17",
+    "@tailwindcss/vite": "^4.1.17",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
@@ -43,6 +61,8 @@
     "globals": "^16.5.0",
     "playwright": "^1.57.0",
     "postcss": "^8.5.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "storybook": "^10.0.8",
     "tailwindcss": "^4.1.17",
     "typescript": "~5.9.3",
